@@ -7,10 +7,11 @@
     <title>Reporte de Transportes</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --light: #ecf0f1;
-            --dark: #34495e;
+            --primary: #2e7d32;
+            --secondary: #4caf50;
+            --light: #e8f5e9;
+            --dark: #1b5e20;
+            --accent: #81c784;
         }
         
         * {
@@ -21,7 +22,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            background: linear-gradient(135deg, #f1f8e9 0%, #e8f5e9 100%);
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -58,7 +59,7 @@
         .update-time {
             font-size: 1rem;
             margin-bottom: 10px;
-            color: #ecf0f1;
+            color: #e8f5e9;
             font-style: italic;
         }
         
@@ -81,15 +82,8 @@
             font-weight: 600;
             padding: 15px 10px;
             text-align: left;
-            position: relative;
-        }
-        
-        th .filter-input {
-            width: 100%;
-            margin-top: 5px;
-            padding: 5px;
-            border: none;
-            border-radius: 3px;
+            position: sticky;
+            top: 0;
         }
         
         tbody td {
@@ -98,17 +92,18 @@
         }
         
         tbody tr:nth-child(even) {
-            background-color: #f8f9fa;
+            background-color: var(--light);
         }
         
         tbody tr:hover {
-            background-color: #e3f2fd !important;
+            background-color: var(--accent) !important;
+            color: white;
         }
         
         .footer {
             text-align: center;
             margin-top: 30px;
-            color: #7f8c8d;
+            color: var(--dark);
             font-size: 0.9rem;
         }
         
@@ -131,7 +126,7 @@
         
         #searchInput:focus {
             border-color: var(--secondary);
-            box-shadow: 0 2px 12px rgba(52, 152, 219, 0.3);
+            box-shadow: 0 2px 12px rgba(76, 175, 80, 0.3);
         }
         
         .asc::after {
@@ -154,7 +149,7 @@
         <header>
             <h1>Reporte de Transportes</h1>
             <div class="subtitle">Horarios de salida y llegada</div>
-            <div class="update-time">Reporte actualizado en 30/05/2025 15:58:45</div>
+            <div class="update-time">Reporte actualizado en 30/05/2025 16:02:45</div>
         </header>
         
         <div class="search-container">
@@ -165,47 +160,15 @@
             <table id="transportes-table">
                 <thead>
                     <tr>
-                        <th>DESTINO<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
-                        <th>LOCALIDAD<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
-                        <th>PRODUCTO<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
-                        <th>HORA SALIDA<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
-                        <th>HORA LLEGADA<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
+                        <th>DESTINO</th>
+                        <th>LOCALIDAD</th>
+                        <th>PRODUCTO</th>
+                        <th>HORA SALIDA</th>
+                        <th>HORA LLEGADA</th>
                     </tr>
                 </thead>
                 <tbody>
                     
-    <tr>
-        <td>ALTO LIMA S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>10:38:08</td>
-        <td>11:26:08</td>
-    </tr>
-    
-    <tr>
-        <td>ALTO LIMA S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>10:38:08</td>
-        <td>11:26:08</td>
-    </tr>
-    
-    <tr>
-        <td>BASSAM LIMITADA</td>
-        <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>14:29:58</td>
-        <td>15:14:58</td>
-    </tr>
-    
-    <tr>
-        <td>CALACOTO</td>
-        <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>11:41:34</td>
-        <td>12:39:34</td>
-    </tr>
-    
     <tr>
         <td>CALACOTO</td>
         <td>LA PAZ</td>
@@ -215,139 +178,11 @@
     </tr>
     
     <tr>
-        <td>CARBURANTES DEL SUR SOCIEDAD DE RESPONSABILIDAD LIMITADA</td>
+        <td>SALIDA LTDA.</td>
         <td>LA PAZ</td>
         <td>GES</td>
-        <td>08:22:04</td>
-        <td>09:11:04</td>
-    </tr>
-    
-    <tr>
-        <td>CRISTO AUTOGAS SOCIEDAD DE RESPONSABILIDAD LIMITADA</td>
-        <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>09:49:37</td>
-        <td>10:39:37</td>
-    </tr>
-    
-    <tr>
-        <td>EDUARDO YUPANQUI QUISPE</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>11:40:07</td>
-        <td>12:45:06</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE COMERCIALIZACION COMBUSTIBLES LIQUIDOS DE PETROLEO "ECOPETROL"</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>14:43:54</td>
-        <td>15:11:54</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "ALIMARC" INTER GAS BOLIVIA S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>13:19:46</td>
-        <td>13:44:46</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "APOSTOL SANTIAGO"</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>09:51:08</td>
-        <td>10:16:08</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "C. REDENTOR" S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>10:56:33</td>
-        <td>11:21:33</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "C. REDENTOR" S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>06:48:29</td>
-        <td>07:13:29</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "CHALY"</td>
-        <td>PALCA</td>
-        <td>DOS</td>
-        <td>07:52:40</td>
-        <td>09:26:40</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "CUENTAS SAN PABLO II S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>10:22:58</td>
-        <td>11:10:58</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO "CUENTAS SAN PABLO II S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>10:22:58</td>
-        <td>11:10:58</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO 6 DE MARZO</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>07:52:03</td>
-        <td>08:17:03</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO 6 DE MARZO</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>08:12:21</td>
-        <td>08:37:21</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO CANDELARIA LTDA</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>13:51:12</td>
-        <td>14:16:12</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO CHASQUIPAMPA S.R.L</td>
-        <td>LA PAZ</td>
-        <td>GES</td>
-        <td>08:11:04</td>
-        <td>09:18:04</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO DRAGON DE ORO</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>11:46:41</td>
-        <td>12:15:41</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO EL PARAISO S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>09:50:25</td>
-        <td>10:17:25</td>
+        <td>05:58:06</td>
+        <td>06:44:06</td>
     </tr>
     
     <tr>
@@ -359,123 +194,11 @@
     </tr>
     
     <tr>
-        <td>ESTACION DE SERVICIO ILLIMANI S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>11:16:10</td>
-        <td>11:43:10</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO ILLIMANI S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>07:41:37</td>
-        <td>08:08:37</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO INTEROCEANICO</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>12:57:16</td>
-        <td>13:49:16</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO INTEROCEANICO</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>07:21:42</td>
-        <td>08:13:42</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO LAREDO S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>13:33:45</td>
-        <td>13:58:45</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO LAREDO S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>07:21:23</td>
-        <td>07:46:23</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO LAS ROSAS S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>12:05:56</td>
-        <td>12:30:56</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO LOZA</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>12:26:27</td>
-        <td>12:51:27</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO M&G CAMINO REAL</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>12:10:22</td>
-        <td>13:24:22</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO M&G CAMINO REAL</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>06:20:11</td>
-        <td>07:34:11</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO MARANATHA</td>
+        <td>ESUR G.H.S. LTDA.</td>
         <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>09:53:57</td>
-        <td>11:22:57</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO SAN PABLO VILLA BOLIVAR S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>08:53:38</td>
-        <td>09:22:38</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO SAN SEBASTIAN S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>13:33:04</td>
-        <td>13:58:04</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIO SAN SEBASTIAN S.R.L.</td>
-        <td>EL ALTO</td>
         <td>GES</td>
-        <td>07:36:16</td>
-        <td>08:01:16</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIOS DE COMBUSTIBLES JUAN PABLO II</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>06:46:14</td>
-        <td>07:27:14</td>
+        <td>06:09:59</td>
+        <td>07:06:59</td>
     </tr>
     
     <tr>
@@ -487,35 +210,11 @@
     </tr>
     
     <tr>
-        <td>ESTACION DE SERVICIOS VOLCAN S.R.L.</td>
-        <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>10:02:18</td>
-        <td>10:50:18</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACION DE SERVICIOS VOLCAN S.R.L.</td>
-        <td>LA PAZ</td>
+        <td>ESTACION DE SERVICIO M&G CAMINO REAL</td>
+        <td>EL ALTO</td>
         <td>GES</td>
-        <td>14:01:39</td>
-        <td>14:49:39</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACIÓN DE SERVICIO CALUYO S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>09:29:13</td>
-        <td>09:54:13</td>
-    </tr>
-    
-    <tr>
-        <td>ESTACIÓN DE SERVICIO SEÑOR DE MAYO S.R.L.</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>11:52:26</td>
-        <td>12:34:26</td>
+        <td>06:20:11</td>
+        <td>07:34:11</td>
     </tr>
     
     <tr>
@@ -527,43 +226,115 @@
     </tr>
     
     <tr>
-        <td>ESTACIÓN DE SERVICIO ZOFRI S.R.L.</td>
+        <td>ESTACION DE SERVICIOS DE COMBUSTIBLES JUAN PABLO II</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>06:46:14</td>
+        <td>07:27:14</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "C. REDENTOR" S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>06:48:29</td>
+        <td>07:13:29</td>
+    </tr>
+    
+    <tr>
+        <td>SURTIDORES UNITOURS LTDA.</td>
+        <td>MECAPACA</td>
+        <td>GES</td>
+        <td>07:11:16</td>
+        <td>08:10:16</td>
+    </tr>
+    
+    <tr>
+        <td>SURTIDORES UNITOURS LTDA.</td>
+        <td>MECAPACA</td>
+        <td>DOS</td>
+        <td>07:11:16</td>
+        <td>08:10:16</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO LAREDO S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>07:21:23</td>
+        <td>07:46:23</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO INTEROCEANICO</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>07:21:42</td>
+        <td>08:13:42</td>
+    </tr>
+    
+    <tr>
+        <td>TEXAS S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>07:25:29</td>
+        <td>07:56:29</td>
+    </tr>
+    
+    <tr>
+        <td>SOCIEDAD INDUSTRIAL COMERCIALIZADORA Y EXPORTADORA G.L.P.H. LTDA.</td>
+        <td>LA PAZ</td>
+        <td>GES</td>
+        <td>07:30:39</td>
+        <td>08:25:39</td>
+    </tr>
+    
+    <tr>
+        <td>SOCIEDAD INDUSTRIAL COMERCIALIZADORA Y EXPORTADORA G.L.P.H. LTDA.</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>07:30:39</td>
+        <td>08:25:39</td>
+    </tr>
+    
+    <tr>
+        <td>SIEMPRE A FULL MIRAFLORES S.R.L. SAF S.R.L.</td>
+        <td>LA PAZ</td>
+        <td>GES</td>
+        <td>07:31:56</td>
+        <td>08:20:56</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO SAN SEBASTIAN S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>07:36:16</td>
+        <td>08:01:16</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO ILLIMANI S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>07:41:37</td>
+        <td>08:08:37</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO 6 DE MARZO</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>07:52:03</td>
+        <td>08:17:03</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "CHALY"</td>
         <td>PALCA</td>
         <td>DOS</td>
-        <td>12:58:09</td>
-        <td>13:23:09</td>
-    </tr>
-    
-    <tr>
-        <td>ESUR G.H.S. LTDA.</td>
-        <td>LA PAZ</td>
-        <td>GES</td>
-        <td>06:09:59</td>
-        <td>07:06:59</td>
-    </tr>
-    
-    <tr>
-        <td>GAS SAN FELIPE</td>
-        <td>EL ALTO</td>
-        <td>DOS</td>
-        <td>10:08:12</td>
-        <td>10:33:12</td>
-    </tr>
-    
-    <tr>
-        <td>GAS SAN FELIPE</td>
-        <td>EL ALTO</td>
-        <td>GES</td>
-        <td>10:08:12</td>
-        <td>10:33:12</td>
-    </tr>
-    
-    <tr>
-        <td>GAS-MAY S.R.L.</td>
-        <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>09:48:27</td>
-        <td>11:03:27</td>
+        <td>07:52:40</td>
+        <td>09:26:40</td>
     </tr>
     
     <tr>
@@ -583,59 +354,267 @@
     </tr>
     
     <tr>
-        <td>SALIDA LTDA.</td>
+        <td>ESTACION DE SERVICIO CHASQUIPAMPA S.R.L</td>
         <td>LA PAZ</td>
         <td>GES</td>
-        <td>05:58:06</td>
-        <td>06:44:06</td>
+        <td>08:11:04</td>
+        <td>09:18:04</td>
     </tr>
     
     <tr>
-        <td>SIEMPRE A FULL MIRAFLORES S.R.L. SAF S.R.L.</td>
-        <td>LA PAZ</td>
-        <td>GES</td>
-        <td>07:31:56</td>
-        <td>08:20:56</td>
-    </tr>
-    
-    <tr>
-        <td>SOCIEDAD INDUSTRIAL COMERCIALIZADORA Y EXPORTADORA G.L.P.H. LTDA.</td>
-        <td>LA PAZ</td>
-        <td>DOS</td>
-        <td>07:30:39</td>
-        <td>08:25:39</td>
-    </tr>
-    
-    <tr>
-        <td>SOCIEDAD INDUSTRIAL COMERCIALIZADORA Y EXPORTADORA G.L.P.H. LTDA.</td>
-        <td>LA PAZ</td>
-        <td>GES</td>
-        <td>07:30:39</td>
-        <td>08:25:39</td>
-    </tr>
-    
-    <tr>
-        <td>SURTIDORES UNITOURS LTDA.</td>
-        <td>MECAPACA</td>
-        <td>DOS</td>
-        <td>07:11:16</td>
-        <td>08:10:16</td>
-    </tr>
-    
-    <tr>
-        <td>SURTIDORES UNITOURS LTDA.</td>
-        <td>MECAPACA</td>
-        <td>GES</td>
-        <td>07:11:16</td>
-        <td>08:10:16</td>
-    </tr>
-    
-    <tr>
-        <td>TEXAS S.R.L.</td>
+        <td>ESTACION DE SERVICIO 6 DE MARZO</td>
         <td>EL ALTO</td>
         <td>GES</td>
-        <td>07:25:29</td>
-        <td>07:56:29</td>
+        <td>08:12:21</td>
+        <td>08:37:21</td>
+    </tr>
+    
+    <tr>
+        <td>CARBURANTES DEL SUR SOCIEDAD DE RESPONSABILIDAD LIMITADA</td>
+        <td>LA PAZ</td>
+        <td>GES</td>
+        <td>08:22:04</td>
+        <td>09:11:04</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO SAN PABLO VILLA BOLIVAR S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>08:53:38</td>
+        <td>09:22:38</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACIÓN DE SERVICIO CALUYO S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>09:29:13</td>
+        <td>09:54:13</td>
+    </tr>
+    
+    <tr>
+        <td>GAS-MAY S.R.L.</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>09:48:27</td>
+        <td>11:03:27</td>
+    </tr>
+    
+    <tr>
+        <td>CRISTO AUTOGAS SOCIEDAD DE RESPONSABILIDAD LIMITADA</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>09:49:37</td>
+        <td>10:39:37</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO EL PARAISO S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>09:50:25</td>
+        <td>10:17:25</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "APOSTOL SANTIAGO"</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>09:51:08</td>
+        <td>10:16:08</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO MARANATHA</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>09:53:57</td>
+        <td>11:22:57</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIOS VOLCAN S.R.L.</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>10:02:18</td>
+        <td>10:50:18</td>
+    </tr>
+    
+    <tr>
+        <td>GAS SAN FELIPE</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>10:08:12</td>
+        <td>10:33:12</td>
+    </tr>
+    
+    <tr>
+        <td>GAS SAN FELIPE</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>10:08:12</td>
+        <td>10:33:12</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "CUENTAS SAN PABLO II S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>10:22:58</td>
+        <td>11:10:58</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "CUENTAS SAN PABLO II S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>10:22:58</td>
+        <td>11:10:58</td>
+    </tr>
+    
+    <tr>
+        <td>ALTO LIMA S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>10:38:08</td>
+        <td>11:26:08</td>
+    </tr>
+    
+    <tr>
+        <td>ALTO LIMA S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>GES</td>
+        <td>10:38:08</td>
+        <td>11:26:08</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "C. REDENTOR" S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>10:56:33</td>
+        <td>11:21:33</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO ILLIMANI S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>11:16:10</td>
+        <td>11:43:10</td>
+    </tr>
+    
+    <tr>
+        <td>EDUARDO YUPANQUI QUISPE</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>11:40:07</td>
+        <td>12:45:06</td>
+    </tr>
+    
+    <tr>
+        <td>CALACOTO</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>11:41:34</td>
+        <td>12:39:34</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO DRAGON DE ORO</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>11:46:41</td>
+        <td>12:15:41</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACIÓN DE SERVICIO SEÑOR DE MAYO S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>11:52:26</td>
+        <td>12:34:26</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO LAS ROSAS S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>12:05:56</td>
+        <td>12:30:56</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO M&G CAMINO REAL</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>12:10:22</td>
+        <td>13:24:22</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO LOZA</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>12:26:27</td>
+        <td>12:51:27</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO INTEROCEANICO</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>12:57:16</td>
+        <td>13:49:16</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACIÓN DE SERVICIO ZOFRI S.R.L.</td>
+        <td>PALCA</td>
+        <td>DOS</td>
+        <td>12:58:09</td>
+        <td>13:23:09</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO "ALIMARC" INTER GAS BOLIVIA S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>13:19:46</td>
+        <td>13:44:46</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO SAN SEBASTIAN S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>13:33:04</td>
+        <td>13:58:04</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO LAREDO S.R.L.</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>13:33:45</td>
+        <td>13:58:45</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIO CANDELARIA LTDA</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>13:51:12</td>
+        <td>14:16:12</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE SERVICIOS VOLCAN S.R.L.</td>
+        <td>LA PAZ</td>
+        <td>GES</td>
+        <td>14:01:39</td>
+        <td>14:49:39</td>
     </tr>
     
     <tr>
@@ -646,12 +625,28 @@
         <td>14:44:44</td>
     </tr>
     
+    <tr>
+        <td>BASSAM LIMITADA</td>
+        <td>LA PAZ</td>
+        <td>DOS</td>
+        <td>14:29:58</td>
+        <td>15:14:58</td>
+    </tr>
+    
+    <tr>
+        <td>ESTACION DE COMERCIALIZACION COMBUSTIBLES LIQUIDOS DE PETROLEO "ECOPETROL"</td>
+        <td>EL ALTO</td>
+        <td>DOS</td>
+        <td>14:43:54</td>
+        <td>15:11:54</td>
+    </tr>
+    
                 </tbody>
             </table>
         </div>
         
         <div class="footer">
-            <p>Generado el 30/05/2025 15:58:45 | © 2025 Sistema de Transportes</p>
+            <p>Generado el 30/05/2025 16:02:45 | © 2025 Sistema de Transportes</p>
         </div>
     </div>
 
@@ -677,76 +672,55 @@
             }
         });
         
-        // Funcionalidad de filtrado por columna
-        document.querySelectorAll('.filter-input').forEach(input => {
-            input.addEventListener('input', function() {
-                const columnIndex = this.parentElement.cellIndex;
-                const filterValue = this.value.toLowerCase();
-                const table = document.getElementById('transportes-table');
-                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
-                
-                for (let row of rows) {
-                    const cell = row.getElementsByTagName('td')[columnIndex];
-                    if (cell.textContent.toLowerCase().includes(filterValue)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                }
-            });
-        });
-        
         // Funcionalidad de ordenamiento
         document.querySelectorAll('th').forEach(header => {
-            if (!header.querySelector('.filter-input')) {
-                header.addEventListener('click', function() {
-                    const table = document.getElementById('transportes-table');
-                    const tbody = table.querySelector('tbody');
-                    const rows = Array.from(tbody.querySelectorAll('tr:not([style*="display: none"])'));
-                    const columnIndex = Array.from(this.parentElement.children).indexOf(this);
-                    const isAscending = this.classList.contains('asc');
-                    
-                    // Resetear otros encabezados
-                    document.querySelectorAll('th').forEach(th => {
-                        if (th !== this) {
-                            th.classList.remove('asc', 'desc');
-                        }
-                    });
-                    
-                    // Ordenar filas
-                    rows.sort((a, b) => {
-                        const aValue = a.children[columnIndex].textContent.trim();
-                        const bValue = b.children[columnIndex].textContent.trim();
-                        
-                        // Intenta convertir a número si es posible
-                        const aNum = parseFloat(aValue.replace(',', '.'));
-                        const bNum = parseFloat(bValue.replace(',', '.'));
-                        
-                        if (!isNaN(aNum) && !isNaN(bNum)) {
-                            return isAscending ? aNum - bNum : bNum - aNum;
-                        }
-                        
-                        // Manejo especial para horas (formato HH:MM:SS)
-                        if (aValue.match(/^\d{2}:\d{2}:\d{2}$/) && bValue.match(/^\d{2}:\d{2}:\d{2}$/)) {
-                            const aTime = aValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
-                            const bTime = bValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
-                            return isAscending ? aTime - bTime : bTime - aTime;
-                        }
-                        
-                        // Orden alfabético
-                        return isAscending 
-                            ? aValue.localeCompare(bValue) 
-                            : bValue.localeCompare(aValue);
-                    });
-                    
-                    // Actualizar tabla
-                    rows.forEach(row => tbody.appendChild(row));
-                    
-                    // Actualizar indicador de ordenamiento
-                    this.classList.toggle('asc', !isAscending);
-                    this.classList.toggle('desc', isAscending);
+            header.addEventListener('click', function() {
+                const table = document.getElementById('transportes-table');
+                const tbody = table.querySelector('tbody');
+                const rows = Array.from(tbody.querySelectorAll('tr:not([style*="display: none"])'));
+                const columnIndex = Array.from(this.parentElement.children).indexOf(this);
+                const isAscending = this.classList.contains('asc');
+                
+                // Resetear otros encabezados
+                document.querySelectorAll('th').forEach(th => {
+                    if (th !== this) {
+                        th.classList.remove('asc', 'desc');
+                    }
                 });
-            }
+                
+                // Ordenar filas
+                rows.sort((a, b) => {
+                    const aValue = a.children[columnIndex].textContent.trim();
+                    const bValue = b.children[columnIndex].textContent.trim();
+                    
+                    // Intenta convertir a número si es posible
+                    const aNum = parseFloat(aValue.replace(',', '.'));
+                    const bNum = parseFloat(bValue.replace(',', '.'));
+                    
+                    if (!isNaN(aNum) && !isNaN(bNum)) {
+                        return isAscending ? aNum - bNum : bNum - aNum;
+                    }
+                    
+                    // Manejo especial para horas (formato HH:MM:SS)
+                    if (aValue.match(/^\d{2}:\d{2}:\d{2}$/) && bValue.match(/^\d{2}:\d{2}:\d{2}$/)) {
+                        const aTime = aValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
+                        const bTime = bValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
+                        return isAscending ? aTime - bTime : bTime - aTime;
+                    }
+                    
+                    // Orden alfabético
+                    return isAscending 
+                        ? aValue.localeCompare(bValue) 
+                        : bValue.localeCompare(aValue);
+                });
+                
+                // Actualizar tabla
+                rows.forEach(row => tbody.appendChild(row));
+                
+                // Actualizar indicador de ordenamiento
+                this.classList.toggle('asc', !isAscending);
+                this.classList.toggle('desc', isAscending);
+            });
         });
     </script>
 </body>
