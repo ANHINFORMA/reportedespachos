@@ -62,34 +62,6 @@
             font-style: italic;
         }
         
-        .stats {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .stat-card {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            min-width: 200px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-        }
-        
-        .stat-card .value {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--dark);
-        }
-        
-        .stat-card .label {
-            color: #7f8c8d;
-            font-size: 1rem;
-        }
-        
         .table-container {
             overflow-x: auto;
             margin-bottom: 30px;
@@ -109,6 +81,15 @@
             font-weight: 600;
             padding: 15px 10px;
             text-align: left;
+            position: relative;
+        }
+        
+        th .filter-input {
+            width: 100%;
+            margin-top: 5px;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
         }
         
         tbody td {
@@ -153,12 +134,15 @@
             box-shadow: 0 2px 12px rgba(52, 152, 219, 0.3);
         }
         
+        .asc::after {
+            content: " ↑";
+        }
+        
+        .desc::after {
+            content: " ↓";
+        }
+        
         @media (max-width: 768px) {
-            .stats {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             h1 {
                 font-size: 2rem;
             }
@@ -170,18 +154,22 @@
         <header>
             <h1>Reporte de Transportes</h1>
             <div class="subtitle">Horarios de salida y llegada</div>
-            <div class="update-time">Reporte actualizado en 30/05/2025 15:51:29</div>
+            <div class="update-time">Reporte actualizado en 30/05/2025 15:58:45</div>
         </header>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Buscar en toda la tabla...">
+        </div>
         
         <div class="table-container">
             <table id="transportes-table">
                 <thead>
                     <tr>
-                        <th>DESTINO</th>
-                        <th>LOCALIDAD</th>
-                        <th>PRODUCTO</th>
-                        <th>HORA SALIDA</th>
-                        <th>HORA LLEGADA</th>
+                        <th>DESTINO<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
+                        <th>LOCALIDAD<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
+                        <th>PRODUCTO<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
+                        <th>HORA SALIDA<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
+                        <th>HORA LLEGADA<br><input type="text" class="filter-input" placeholder="Filtrar..."></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -663,12 +651,12 @@
         </div>
         
         <div class="footer">
-            <p>Generado el 30/05/2025 15:51:29 | © 2025 Sistema de Transportes</p>
+            <p>Generado el 30/05/2025 15:58:45 | © 2025 Sistema de Transportes</p>
         </div>
     </div>
 
     <script>
-        // Funcionalidad de búsqueda
+        // Funcionalidad de búsqueda general
         document.getElementById('searchInput').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             const table = document.getElementById('transportes-table');
@@ -689,53 +677,76 @@
             }
         });
         
+        // Funcionalidad de filtrado por columna
+        document.querySelectorAll('.filter-input').forEach(input => {
+            input.addEventListener('input', function() {
+                const columnIndex = this.parentElement.cellIndex;
+                const filterValue = this.value.toLowerCase();
+                const table = document.getElementById('transportes-table');
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                for (let row of rows) {
+                    const cell = row.getElementsByTagName('td')[columnIndex];
+                    if (cell.textContent.toLowerCase().includes(filterValue)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+            });
+        });
+        
         // Funcionalidad de ordenamiento
         document.querySelectorAll('th').forEach(header => {
-            header.addEventListener('click', function() {
-                const table = document.getElementById('transportes-table');
-                const tbody = table.querySelector('tbody');
-                const rows = Array.from(tbody.querySelectorAll('tr'));
-                const columnIndex = Array.from(this.parentElement.children).indexOf(this);
-                const isAscending = this.classList.contains('asc');
-                
-                // Resetear otros encabezados
-                document.querySelectorAll('th').forEach(th => {
-                    th.classList.remove('asc', 'desc');
+            if (!header.querySelector('.filter-input')) {
+                header.addEventListener('click', function() {
+                    const table = document.getElementById('transportes-table');
+                    const tbody = table.querySelector('tbody');
+                    const rows = Array.from(tbody.querySelectorAll('tr:not([style*="display: none"])'));
+                    const columnIndex = Array.from(this.parentElement.children).indexOf(this);
+                    const isAscending = this.classList.contains('asc');
+                    
+                    // Resetear otros encabezados
+                    document.querySelectorAll('th').forEach(th => {
+                        if (th !== this) {
+                            th.classList.remove('asc', 'desc');
+                        }
+                    });
+                    
+                    // Ordenar filas
+                    rows.sort((a, b) => {
+                        const aValue = a.children[columnIndex].textContent.trim();
+                        const bValue = b.children[columnIndex].textContent.trim();
+                        
+                        // Intenta convertir a número si es posible
+                        const aNum = parseFloat(aValue.replace(',', '.'));
+                        const bNum = parseFloat(bValue.replace(',', '.'));
+                        
+                        if (!isNaN(aNum) && !isNaN(bNum)) {
+                            return isAscending ? aNum - bNum : bNum - aNum;
+                        }
+                        
+                        // Manejo especial para horas (formato HH:MM:SS)
+                        if (aValue.match(/^\d{2}:\d{2}:\d{2}$/) && bValue.match(/^\d{2}:\d{2}:\d{2}$/)) {
+                            const aTime = aValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
+                            const bTime = bValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
+                            return isAscending ? aTime - bTime : bTime - aTime;
+                        }
+                        
+                        // Orden alfabético
+                        return isAscending 
+                            ? aValue.localeCompare(bValue) 
+                            : bValue.localeCompare(aValue);
+                    });
+                    
+                    // Actualizar tabla
+                    rows.forEach(row => tbody.appendChild(row));
+                    
+                    // Actualizar indicador de ordenamiento
+                    this.classList.toggle('asc', !isAscending);
+                    this.classList.toggle('desc', isAscending);
                 });
-                
-                // Ordenar filas
-                rows.sort((a, b) => {
-                    const aValue = a.children[columnIndex].textContent.trim();
-                    const bValue = b.children[columnIndex].textContent.trim();
-                    
-                    // Intenta convertir a número si es posible
-                    const aNum = parseFloat(aValue.replace(',', '.'));
-                    const bNum = parseFloat(bValue.replace(',', '.'));
-                    
-                    if (!isNaN(aNum) && !isNaN(bNum)) {
-                        return isAscending ? aNum - bNum : bNum - aNum;
-                    }
-                    
-                    // Manejo especial para horas (formato HH:MM:SS)
-                    if (aValue.match(/^\d2:\d2:\d2$/) && bValue.match(/^\d2:\d2:\d2$/)) {
-                        const aTime = aValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
-                        const bTime = bValue.split(':').reduce((acc, val, i) => acc + parseInt(val) * Math.pow(60, 2-i), 0);
-                        return isAscending ? aTime - bTime : bTime - aTime;
-                    }
-                    
-                    // Orden alfabético
-                    return isAscending 
-                        ? aValue.localeCompare(bValue) 
-                        : bValue.localeCompare(aValue);
-                });
-                
-                // Actualizar tabla
-                rows.forEach(row => tbody.appendChild(row));
-                
-                // Actualizar indicador de ordenamiento
-                this.classList.toggle('asc', !isAscending);
-                this.classList.toggle('desc', isAscending);
-            });
+            }
         });
     </script>
 </body>
